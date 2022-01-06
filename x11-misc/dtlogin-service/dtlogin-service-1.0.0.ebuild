@@ -35,5 +35,5 @@ EOF
 
 src_install() {
 	install -d "$D/lib/systemd/system"
-	install dtlogin.service "$D/lib/systemd/system"
+	install -m 0444 dtlogin.service "$D/lib/systemd/system"
 }
