@@ -1,6 +1,8 @@
 # portage
 Gentoo ebuild repository
 
+The license refers to the ebuild files themselves, not the projects that they refer to.
+
 Use this repository by
 
 ```
