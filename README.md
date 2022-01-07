@@ -15,3 +15,15 @@ Remove using
 ```
 # eselect repository remove -f rhubarb-geek-nz
 ```
+
+Altenatively, in a Dockerfile
+
+```
+RUN mkdir /etc/portage/repos.conf && \
+	echo $'# created by eselect-repo\n\
+[rhubarb-geek-nz]\n\
+location = /var/db/repos/rhubarb-geek-nz\n\
+sync-type = git\n\
+sync-uri = https://github.com/rhubarb-geek-nz/portage.git' >> /etc/portage/repos.conf/eselect-repo.conf && \
+	git clone https://github.com/rhubarb-geek-nz/portage.git /var/db/repos/rhubarb-geek-nz
+```
