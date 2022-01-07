@@ -1,13 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Text editor based on interface from Intel ISIS-II aedit"
 HOMEPAGE="https://sourceforge.net/projects/rhbaedit/"
-ESVN_REPO_URI="https://svn.code.sf.net/p/rhbaedit/code/trunk@6"
-
-inherit subversion
+SRC_URI="https://sourceforge.net/projects/rhbaedit/files/src/aedit-11.tar"
+S="$WORKDIR/aedit-11"
 
 LICENSE="GPL-2+"
 SLOT="0"
