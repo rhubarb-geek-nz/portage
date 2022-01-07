@@ -16,7 +16,7 @@ Remove using
 # eselect repository remove -f rhubarb-geek-nz
 ```
 
-Altenatively, in a Dockerfile
+Alternatively, in a Dockerfile
 
 ```
 RUN mkdir /etc/portage/repos.conf && \
