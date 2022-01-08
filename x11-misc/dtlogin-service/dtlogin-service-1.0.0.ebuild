@@ -10,9 +10,8 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="x86 amd64 arm arm64"
 
-DEPEND="x11-misc/cdesktopenv"
-
-RDEPEND="${DEPEND}"
+RDEPEND="sys-apps/systemd
+	x11-misc/cdesktopenv"
 
 src_unpack() 
 {
