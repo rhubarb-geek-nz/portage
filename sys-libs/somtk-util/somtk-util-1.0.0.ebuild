@@ -8,7 +8,7 @@ HOMEPAGE="https://sourceforge.net/projects/somfree/"
 SRC_URI="https://sourceforge.net/projects/somfree/files/src/somfree-code-r68-trunk.zip"
 S="$WORKDIR/somfree-code-r68-trunk"
 RDEPEND="sys-libs/somtk-ir"
-BDEPEND="sys-libs/somtk-comp"
+BDEPEND="dev-lang/somtk-comp"
 
 LICENSE="LGPL-3+"
 SLOT="0"
