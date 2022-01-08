@@ -1,13 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="somFree - Portable implementation of SOM - runtime compiler"
 HOMEPAGE="https://sourceforge.net/projects/somfree/"
-ESVN_REPO_URI="https://svn.code.sf.net/p/somfree/code/trunk@65"
-
-inherit subversion
+SRC_URI="https://sourceforge.net/projects/somfree/files/src/somfree-code-r68-trunk.zip"
+S="$WORKDIR/somfree-code-r68-trunk"
 
 LICENSE="LGPL-3+"
 SLOT="0"
@@ -26,10 +25,13 @@ src_compile() {
 		fi
 	done
 
-	chmod +x toolbox/dir2rpm.sh toolbox/dir2deb.sh
-
 	PLATFORM=$($CONFIG_GUESS)
 	PLATFORM_HOST=ebuild-pc-linux-gnu
+
+	for d in dsom somabs1 somu somu2 somd somdd regimpl somdchk soms somst somdsvr somdtype somdprep somdapps somdcomm rhbgiop1 irdump somestrm somir somtc somidl somtkidl somistub shlbtest ipv6test somkprep som somref somiprep somtest0 somcorba somem somcdr somdstub somnmf somos somossvr somany somcslib somp somkpub
+	do
+		rm "$d/unix/$d.mak"
+	done
 
 	if test ! -f products/$PLATFORM_HOST/default/bin/cpp
 	then
@@ -38,36 +40,34 @@ src_compile() {
 		ln -s ../../../../cpp/cpp.sh products/$PLATFORM_HOST/default/bin/cpp
 	fi
 
-	if ( PLATFORM=$PLATFORM PLATFORM_HOST=$PLATFORM_HOST make )
-	then
-		:
-	else
-		rm -rf products/$PLATFORM_HOST
-		ln -s $PLATFORM products/$PLATFORM_HOST
-		make || die make all
-	fi
+	PLATFORM=$PLATFORM PLATFORM_HOST=$PLATFORM_HOST make || die make all
 
 	echo "#!/bin/sh" > toolbox/dir2rpm.sh
 
 	echo "#!/bin/sh" > toolbox/dir2deb.sh
 
+	chmod +x toolbox/dir2rpm.sh toolbox/dir2deb.sh
+
+	mkdir -p "somidl/$PLATFORM"
+
+	touch "somidl/$PLATFORM/somobj.h"
+
+	for d in somdobj somdcprx orb somoa boa nvlist om cntxt impldef implrep principl request servmgr somdom somdtype stexcep unotypes somproxy omgestio xmscssae somdserv naming lname xnaming xnamingf lnamec biter somos somddsrv somestio repostry containd containr intfacdf operatdf moduledf paramdef somref typedef excptdef constdef attribdf somssock tcpsock workprev timerev somsid eman sinkev clientev emregdat event snglicls somida omgidobj somcls somobj somcm
+	do
+		touch "somidl/$d.idl"
+	done
+
+	for d in somdsvr somdchk somossvr
+	do
+		touch "products/$PLATFORM/default/bin/$d"
+	done
+
+	for d in somnew.ir
+	do
+		touch "products/$PLATFORM/default/etc/$d"
+	done
+
 	make dist || die make dist
-}
-
-src_test() {
-	OUTDIR=$(find products -type d -name default)
-	
-	echo "OUTDIR=$OUTDIR"
-
-	LD_LIBRARY_PATH="$OUTDIR/lib" "$OUTDIR/tests/somtest0" || die somtest0
-
-	LD_LIBRARY_PATH="$OUTDIR/lib" SOMIR="$OUTDIR/etc/somnew.ir" "$OUTDIR/bin/irdump" ::SOMObject::somFree || die irdump ::SOMObject::somFree
-
-	cat ipv6test/gnuelf/ipv6test.h 
-
-	"$OUTDIR/tests/ipv6test" || die make test
-
-	cat ipv6test/gnuelf/ipv6test.h 
 }
 
 src_install() {

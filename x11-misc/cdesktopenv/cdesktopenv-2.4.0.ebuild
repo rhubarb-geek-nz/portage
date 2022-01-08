@@ -3,12 +3,10 @@
 
 EAPI=8
 
-inherit git-r3
-
 DESCRIPTION="The Common Desktop Environment, the classic UNIX desktop"
 HOMEPAGE="https://sourceforge.net/projects/cdesktopenv/"
-EGIT_REPO_URI="https://git.code.sf.net/p/cdesktopenv/code"
-EGIT_COMMIT="2.4.0"
+SRC_URI="https://sourceforge.net/projects/cdesktopenv/files/src/cde-2.4.0.tar.gz"
+S="$WORKDIR"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -60,13 +58,14 @@ pkg_pretend() {
 }
 
 src_compile() {
-	cd cde
+	cd cde-2.4.0
 	make World || die make World
 	ls -ld exports/include/Dt/Dt.h programs/dtksh/dtksh programs/dtdocbook/instant/instant || die missing files
 }
 
 src_test() {
-	ls -ld cde/exports/include/Dt/Dt.h cde/programs/dtksh/dtksh cde/programs/dtdocbook/instant/instant || die missing files
+	cd cde-2.4.0
+	ls -ld exports/include/Dt/Dt.h programs/dtksh/dtksh programs/dtdocbook/instant/instant || die missing files
 }
 
 src_install() {
@@ -109,7 +108,7 @@ EOF
 
 		trap "rm -rf $MYTMPDIR" 0
 
-		cd cde
+		cd cde-2.4.0
 
 		PATH="$MYTMPDIR:$PATH" admin/IntegTools/dbTools/installCDE -s $(pwd) -destdir "$D" -DontRunScripts
 	) || die installCDE 

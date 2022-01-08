@@ -10,8 +10,9 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="x86 amd64 arm arm64"
 
-RDEPEND="sys-apps/systemd
-	x11-misc/cdesktopenv"
+DEPEND="x11-misc/cdesktopenv"
+
+RDEPEND="${DEPEND}"
 
 src_unpack() 
 {
@@ -34,5 +35,5 @@ EOF
 
 src_install() {
 	install -d "$D/lib/systemd/system"
-	install -m 0444 dtlogin.service "$D/lib/systemd/system"
+	install -m 0644 dtlogin.service "$D/lib/systemd/system"
 }

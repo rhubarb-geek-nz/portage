@@ -1,14 +1,14 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="somFree - Portable implementation of SOM - utilities"
 HOMEPAGE="https://sourceforge.net/projects/somfree/"
-ESVN_REPO_URI="https://svn.code.sf.net/p/somfree/code/trunk@65"
-RDEPEND="sys-libs/somtk-rte"
-
-inherit subversion
+SRC_URI="https://sourceforge.net/projects/somfree/files/src/somfree-code-r68-trunk.zip"
+S="$WORKDIR/somfree-code-r68-trunk"
+RDEPEND="sys-libs/somtk-ir"
+BDEPEND="sys-libs/somtk-comp"
 
 LICENSE="LGPL-3+"
 SLOT="0"
@@ -27,30 +27,48 @@ src_compile() {
 		fi
 	done
 
-	chmod +x toolbox/dir2rpm.sh toolbox/dir2deb.sh
-
 	PLATFORM=$($CONFIG_GUESS)
 	PLATFORM_HOST=ebuild-pc-linux-gnu
 
 	if test ! -f products/$PLATFORM_HOST/default/bin/cpp
 	then
-		mkdir -p products/$PLATFORM_HOST/default/bin
+		mkdir -p "products/$PLATFORM_HOST/default/bin"
 
-		ln -s ../../../../cpp/cpp.sh products/$PLATFORM_HOST/default/bin/cpp
+		ln -s ../../../../cpp/cpp.sh "products/$PLATFORM_HOST/default/bin/cpp"
+
+		for d in /usr/share/somtk/bin/*
+		do
+			if test -f "$d"
+			then
+				ln -s "$d" "products/$PLATFORM_HOST/default/bin"
+			fi
+		done
+
+		ls -l "products/$PLATFORM_HOST/default/bin"
 	fi
 
-	if ( PLATFORM=$PLATFORM PLATFORM_HOST=$PLATFORM_HOST make )
-	then
-		:
-	else
-		rm -rf products/$PLATFORM_HOST
-		ln -s $PLATFORM products/$PLATFORM_HOST
-		make || die make all
-	fi
+	for d in somdapps regimpl somdd somossvr somossvr somdsvr shlbtest ipv6test somdchk dsom rhbgiop1 somd somipc pdl somdcomm somnmf somos somcslib somp somestrm somdstub
+	do
+		rm "$d/unix/$d.mak"
+	done
+
+	PLATFORM=$PLATFORM PLATFORM_HOST=$PLATFORM_HOST make || die make all
 
 	echo "#!/bin/sh" > toolbox/dir2rpm.sh
 
 	echo "#!/bin/sh" > toolbox/dir2deb.sh
+
+	chmod +x toolbox/dir2rpm.sh toolbox/dir2deb.sh
+
+	for d in somddsrv
+	do
+		touch "somidl/$d.idl"
+	done
+
+	for d in somdsvr somdchk somossvr somipc pdl
+	do
+		touch "products/$PLATFORM/default/bin/$d"
+	done
 
 	make dist || die make dist
 }
