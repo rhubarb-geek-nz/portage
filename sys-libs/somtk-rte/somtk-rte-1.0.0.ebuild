@@ -5,14 +5,14 @@ EAPI=8
 
 DESCRIPTION="somFree - Portable implementation of SOM - runtime environment"
 HOMEPAGE="https://sourceforge.net/projects/somfree/"
-SRC_URI="https://sourceforge.net/projects/somfree/files/src/somfree-code-r68-trunk.zip"
-S="$WORKDIR/somfree-code-r68-trunk"
+SRC_URI="https://sourceforge.net/projects/somfree/files/src/somfree-code-r70-trunk.zip"
+S="$WORKDIR/somfree-code-r70-trunk"
 
 LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="x86 amd64 arm arm64"
 
-BDEPENDS="dev-lang/somtk-comp"
+BDEPEND="dev-lang/somtk-comp"
 
 src_compile() {
 

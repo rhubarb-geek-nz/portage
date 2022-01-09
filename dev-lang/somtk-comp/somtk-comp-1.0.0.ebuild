@@ -5,8 +5,8 @@ EAPI=8
 
 DESCRIPTION="somFree - Portable implementation of SOM - runtime compiler"
 HOMEPAGE="https://sourceforge.net/projects/somfree/"
-SRC_URI="https://sourceforge.net/projects/somfree/files/src/somfree-code-r68-trunk.zip"
-S="$WORKDIR/somfree-code-r68-trunk"
+SRC_URI="https://sourceforge.net/projects/somfree/files/src/somfree-code-r70-trunk.zip"
+S="$WORKDIR/somfree-code-r70-trunk"
 
 LICENSE="LGPL-3+"
 SLOT="0"
