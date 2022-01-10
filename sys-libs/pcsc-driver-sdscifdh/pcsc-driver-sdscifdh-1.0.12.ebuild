@@ -10,6 +10,7 @@ S="$WORKDIR/rhbgtsdu-code-r12-trunk-pcsclite"
 DEPEND="dev-libs/libGTSDUpi
 	 sys-apps/pcsc-lite"
 RDEPEND="$DEPEND"
+BDEPEND="bc"
 
 LICENSE="GPL-2+"
 SLOT="0"
