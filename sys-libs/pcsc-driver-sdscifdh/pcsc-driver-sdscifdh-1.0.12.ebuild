@@ -28,21 +28,16 @@ EOF
 }
 
 src_install() {
-	DRIVERDIR=usr/lib/pcsc/drivers
 	CONFDIR=etc/reader.conf.d
 
-	for d in usr/lib64/pcsc/drivers/serial usr/lib/pcsc/drivers/serial usr/lib64/readers/serial usr/lib/readers/serial
-	do
-	if test -d "/$d"
-		then
-			DRIVERDIR="$d"
-			break
-		fi
-	done
-
-	test -n "$DRIVERDIR" || die driver directory not found
-	test -d "/$CONFDIR" || die "/$CONFDIR" not found
-	test -d "/$DRIVERDIR" || die "/$DRIVERDIR" not found
+	case "$ARCH" in
+		*64 )
+			DRIVERDIR=usr/lib64/readers/serial
+			;;
+		* )
+			DRIVERDIR=usr/lib/readers/serial
+			;;			
+	esac
 
 	mkdir -p "$D/$DRIVERDIR" "$D/$CONFDIR"
 
