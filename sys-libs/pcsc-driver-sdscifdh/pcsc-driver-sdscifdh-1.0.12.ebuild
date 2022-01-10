@@ -16,37 +16,37 @@ SLOT="0"
 KEYWORDS="x86 amd64 arm arm64"
 
 src_compile() {
-    mkdir -p bin
-    cat > bin/svn <<EOF
+	mkdir -p bin
+	cat > bin/svn <<EOF
 #!/bin/sh -ex
 echo Last Changed Rev: 12
 EOF
-    chmod +x bin/svn
+	chmod +x bin/svn
 
-	PATH=$(pwd)/bin:$PATH make  CFLAGS="-I/usr/include/PCSC -Wall" STRIP=strip || die make all
+	PATH=$(pwd)/bin:$PATH make CFLAGS="-I/usr/include/PCSC -Wall" STRIP=strip || die make all
 }
 
 src_install() {
-    DRIVERDIR=usr/lib/pcsc/drivers
-    CONFDIR=etc/reader.conf.d
-    
-    for d in usr/lib64/pcsc/drivers/serial usr/lib/pcsc/drivers/serial usr/lib64/readers/serial usr/lib/readers/serial
-    do
-        if test -d "/$d"
-        then
-            DRIVERDIR="$d"
-            break
-        fi
-    done
+	DRIVERDIR=usr/lib/pcsc/drivers
+	CONFDIR=etc/reader.conf.d
 
-    test -n "$DRIVERDIR"
-    test -d "/$CONFDIR"
-    test -d "/$DRIVERDIR"
+	for d in usr/lib64/pcsc/drivers/serial usr/lib/pcsc/drivers/serial usr/lib64/readers/serial usr/lib/readers/serial
+	do
+	if test -d "/$d"
+		then
+			DRIVERDIR="$d"
+			break
+		fi
+	done
 
-    mkdir -p "$D/$DRIVERDIR" "$D/$CONFDIR"
+	test -n "$DRIVERDIR" || die driver directory not found
+	test -d "/$CONFDIR" || die "/$CONFDIR" not found
+	test -d "/$DRIVERDIR" || die "/$DRIVERDIR" not found
 
-    cp lib*.so "$D/$DRIVERDIR/"
-    cat > "$D/$CONFDIR/libsdscifdh" << EOF
+	mkdir -p "$D/$DRIVERDIR" "$D/$CONFDIR"
+
+	cp lib*.so "$D/$DRIVERDIR/"
+	cat > "$D/$CONFDIR/libsdscifdh" << EOF
 DEVICENAME      /dev/SMART_IO.CRD
 FRIENDLYNAME    "microSD JavaCard"
 LIBPATH         /$DRIVERDIR/libsdscifdh.so
