@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Java Platform, Standard Edition 11 Reference Implementation"
 HOMEPAGE="https://jdk.java.net/java-se-ri/11"
-SRC_URI="openjdk-11+28_linux-x64_bin.tar.gz"
+SRC_URI="https://download.java.net/openjdk/jdk11/ri/openjdk-11+28_linux-x64_bin.tar.gz"
 S="$WORKDIR/jdk-11"
 
 LICENSE="GPL-2"
