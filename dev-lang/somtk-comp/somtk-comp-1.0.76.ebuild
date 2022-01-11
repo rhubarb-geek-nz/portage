@@ -11,6 +11,7 @@ S="$WORKDIR/somfree-code-r76-trunk"
 LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="x86 amd64 arm arm64"
+BDEPEND="sys-devel/bc"
 
 src_compile() {
 

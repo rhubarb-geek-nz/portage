@@ -11,7 +11,8 @@ S="$WORKDIR/somfree-code-r76-trunk"
 RDEPEND="sys-libs/somtk-util
 	sys-libs/somtk-ir"
 
-BDEPEND="dev-lang/somtk-comp"
+BDEPEND="dev-lang/somtk-comp
+	sys-devel/bc"
 
 LICENSE="LGPL-3+"
 SLOT="0"

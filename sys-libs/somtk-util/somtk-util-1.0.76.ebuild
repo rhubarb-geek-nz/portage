@@ -8,7 +8,8 @@ HOMEPAGE="https://sourceforge.net/projects/somfree/"
 SRC_URI="https://sourceforge.net/projects/somfree/files/src/somfree-code-r76-trunk.zip"
 S="$WORKDIR/somfree-code-r76-trunk"
 RDEPEND="sys-libs/somtk-ir"
-BDEPEND="dev-lang/somtk-comp"
+BDEPEND="dev-lang/somtk-comp
+	sys-devel/bc"
 
 LICENSE="LGPL-3+"
 SLOT="0"

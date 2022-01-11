@@ -12,7 +12,8 @@ LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="x86 amd64 arm arm64"
 RDEPEND="sys-libs/somtk-rte"
-BDEPEND="dev-lang/somtk-comp"
+BDEPEND="dev-lang/somtk-comp
+	sys-devel/bc"
 
 src_compile() {
 
