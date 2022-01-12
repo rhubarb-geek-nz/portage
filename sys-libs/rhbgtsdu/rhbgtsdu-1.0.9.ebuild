@@ -43,7 +43,7 @@ EOF
 }
 
 src_install() {
-	mkdir -p "$D/usr/share/rhbgtsdu/lib"
+	mkdir -p "$D/opt/RHBgtsdu/lib"
 
-	cp lib*.so *.jar "$D/usr/share/rhbgtsdu/lib/"
+	cp lib*.so *.jar "$D/opt/RHBgtsdu/lib/"
 }
