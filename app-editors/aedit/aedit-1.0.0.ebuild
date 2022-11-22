@@ -4,8 +4,8 @@
 EAPI=8
 
 DESCRIPTION="Text editor based on interface from Intel ISIS-II aedit"
-HOMEPAGE="https://sourceforge.net/projects/rhbaedit/"
-SRC_URI="https://sourceforge.net/projects/rhbaedit/files/src/aedit-11.tar"
+HOMEPAGE="https://sourceforge.net/projects/aedit/"
+SRC_URI="https://sourceforge.net/projects/aedit/files/src/aedit-11.tar"
 S="$WORKDIR/aedit-11"
 
 LICENSE="GPL-2+"
