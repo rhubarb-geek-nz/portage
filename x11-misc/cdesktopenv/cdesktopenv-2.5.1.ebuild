@@ -5,11 +5,11 @@ EAPI=8
 
 DESCRIPTION="The Common Desktop Environment, the classic UNIX desktop"
 HOMEPAGE="https://sourceforge.net/projects/cdesktopenv/"
-KEYWORDS="~arm ~arm64 ~x86 ~amd64"
-SRC_URI="arm? ( cdesktopenv-2.4.0-arm.tar.bz2 )
-arm64? ( cdesktopenv-2.4.0-arm64.tar.bz2 )
-x86? ( cdesktopenv-2.4.0-x86.tar.bz2 )
-amd64? ( cdesktopenv-2.4.0-amd64.tar.bz2 )"
+KEYWORDS="arm arm64 x86 amd64"
+SRC_URI="arm? ( cdesktopenv-2.5.1-20230127005253-armv7l.tar.gz )
+arm64? ( cdesktopenv-2.5.1-20230127005143-aarch64.tar.gz )
+x86? ( cdesktopenv-2.5.1-20230127005004-i686.tar.gz )
+amd64? ( cdesktopenv-2.5.1-20230127004006-x86_64.tar.gz )"
 
 LICENSE="GPL-2+"
 SLOT="0"
