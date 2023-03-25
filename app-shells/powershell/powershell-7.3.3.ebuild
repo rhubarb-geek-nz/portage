@@ -6,9 +6,9 @@ EAPI=8
 DESCRIPTION="PowerShell is an automation and configuration management platform."
 HOMEPAGE="https://github.com/PowerShell/PowerShell"
 KEYWORDS="arm arm64 amd64"
-SRC_URI="arm? ( https://github.com/PowerShell/PowerShell/releases/download/v7.3.2/powershell-7.3.2-linux-arm32.tar.gz )
-arm64? ( https://github.com/PowerShell/PowerShell/releases/download/v7.3.2/powershell-7.3.2-linux-arm64.tar.gz )
-amd64? ( https://github.com/PowerShell/PowerShell/releases/download/v7.3.2/powershell-7.3.2-linux-x64.tar.gz )"
+SRC_URI="arm? ( https://github.com/PowerShell/PowerShell/releases/download/v7.3.3/powershell-7.3.3-linux-arm32.tar.gz )
+arm64? ( https://github.com/PowerShell/PowerShell/releases/download/v7.3.3/powershell-7.3.3-linux-arm64.tar.gz )
+amd64? ( https://github.com/PowerShell/PowerShell/releases/download/v7.3.3/powershell-7.3.3-linux-x64.tar.gz )"
 S="$WORKDIR"
 LICENSE="MIT"
 SLOT="0"
