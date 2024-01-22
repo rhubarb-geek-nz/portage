@@ -5,8 +5,8 @@ EAPI=8
 
 DESCRIPTION="Text editor based on interface from Intel ISIS-II aedit"
 HOMEPAGE="https://sourceforge.net/projects/aedit/"
-SRC_URI="https://sourceforge.net/projects/aedit/files/src/aedit-59.tar"
-S="$WORKDIR/aedit-59"
+SRC_URI="https://sourceforge.net/projects/aedit/files/src/aedit-71.tar.gz"
+S="$WORKDIR/aedit-71"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -18,9 +18,10 @@ src_configure() {
 
 src_compile() {
 	CFLAGS="-Wall -Werror $CFLAGS" emake aedit || die make
+	bzip2 < aedit.1 > aedit.1.bz2 || die make
 }
 
 src_install() {
-	install -d "$D/usr/bin"
-	install aedit "$D/usr/bin"
+	install -D aedit "$D/usr/bin/aedit"
+	install -D aedit.1.bz2 "$D/usr/share/man/man1/aedit.1.bz2"
 }
