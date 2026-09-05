@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="Text editor based on MS-DOS endlin"
+DESCRIPTION="Text editor based on MS-DOS edlin"
 HOMEPAGE="https://github.com/rhubarb-geek-nz/edlin"
 SRC_URI="https://github.com/rhubarb-geek-nz/edlin/archive/refs/tags/0.9.6.tar.gz"
 S="$WORKDIR/edlin-0.9.6"
