@@ -12,7 +12,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm arm64"
 DEPEND="x11-libs/motif
-	x11-lib/libXpm"
+	x11-lib/libXpm
+	app-shells/pwsh"
 
 src_configure() {
 	true || die configure
