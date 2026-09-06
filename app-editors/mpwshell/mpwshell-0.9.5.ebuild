@@ -20,7 +20,7 @@ src_configure() {
 }
 
 src_compile() {
-	CFLAGS="-Wall -Werror $CFLAGS" emake mpwshell || die make
+	CFLAGS="-Wall -Werror $CFLAGS" emake MPWSHELL_ABOUT="\"MPW Shell, 0.9.5. Copyright \xC2\xA9 2026 Roger Brown\"" mpwshell || die make
 }
 
 src_install() {
