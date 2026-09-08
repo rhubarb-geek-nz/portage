@@ -5,8 +5,8 @@ EAPI=8
 
 DESCRIPTION="Motivated Power Shell - text editor with embedded scripting engine"
 HOMEPAGE="https://github.com/rhubarb-geek-nz/MPWShell"
-SRC_URI="https://github.com/rhubarb-geek-nz/MPWShell/archive/refs/tags/0.9.5.tar.gz"
-S="$WORKDIR/MPWShell-0.9.5/Motif"
+SRC_URI="https://github.com/rhubarb-geek-nz/MPWShell/archive/refs/tags/0.9.6.tar.gz"
+S="$WORKDIR/MPWShell-0.9.6/Motif"
 
 LICENSE="MIT"
 SLOT="0"
@@ -20,7 +20,7 @@ src_configure() {
 }
 
 src_compile() {
-	CFLAGS="-Wall -Werror $CFLAGS" emake MPWSHELL_ABOUT="\"MPW Shell, 0.9.5. Copyright \xC2\xA9 2026 Roger Brown\"" mpwshell || die make
+	CFLAGS="-Wall -Werror $CFLAGS" emake mpwshell || die make
 }
 
 src_install() {
